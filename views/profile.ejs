@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/logout">logout</a>
+    <h1>Welcome, <%= user.username %>!</h1>
+    <p>Email: <%= user.email %></p>
+    <p>Role: <%= user.role %></p>
+    <img src="/qr/<%= user.qr %>" alt="">
+    <p>hadir: <%= user.hadir %></p>
+    <p>makan siang: <%= user.makanSiang %></p>
+    <p>snack: <%= user.snack %></p>
+</body>
+</html>
