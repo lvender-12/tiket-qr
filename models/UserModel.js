@@ -14,10 +14,16 @@ const User = db.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         uniqen: true,
+        validate:{
+            isEmail: true
+        }
     },
     password:{
         type: DataTypes.STRING,
         allowNull: false,
+        validate:{
+            len: [8]
+        }
     },
     role:{
         type: DataTypes.STRING,
@@ -30,12 +36,15 @@ const User = db.define('User', {
     },
     hadir:{
         type: DataTypes.STRING,
+        defaultValue: 'belum',
     },
     makanSiang:{
         type: DataTypes.STRING,
+        defaultValue: 'belum',
     },
     snack:{
         type: DataTypes.STRING,
+        defaultValue: 'belum',
     }
 });
 

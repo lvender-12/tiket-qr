@@ -12,11 +12,29 @@
     <p>email: <%= user.email %></p>
     <p>Role: <%= user.role %></p>
     <img src="/qr/<%= user.qr %>" alt="">
-    <p>hadir: <%= user.hadir %></p>
-    <p>makan siang: <%= user.makanSiang %></p>
-    <p>snack: <%= user.snack %></p>
     <form action="/scanner/:<%=user.uuid%>" method="post">
-        
+        <% if (!user.hadir) { %>
+            <label>
+                <input type="checkbox" name="hadir"> Hadir
+            </label>
+        <% } else { %>
+            <p>hadir: <%= user.hadir %></p>
+        <% } %>
+        <% if (!user.makanSiang) { %>
+            <label>
+                <input type="checkbox" name="makanSiang"> Makan Siang
+            </label>
+        <% } else { %>
+            <p>makan siang: <%= user.makanSiang %></p>
+        <% } %>
+        <% if (!user.snack) { %>
+            <label>
+                <input type="checkbox" name="snack"> Snack
+            </label>
+        <% } else { %>
+            <p>snack: <%= user.snack %></p>
+        <% } %>
+        <button type="submit">Oke</button>
     </form>
 </body>
 </html>
