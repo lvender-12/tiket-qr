@@ -21,4 +21,9 @@ router.get('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.getUser
 router.post('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.updateUser);
 
 
+
+router.use((req, res) => {
+    res.render('404'); // Menggunakan res.render untuk merender halaman 404
+});
+
 module.exports = router;
