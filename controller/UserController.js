@@ -8,6 +8,8 @@ const dayjs = require('dayjs');
 const ip = require('ip');
 const port = process.env.PORT || 3000;
 const ipA = ip.address();
+const infoSuccess = 'card-susuccess';
+const infoError = 'card-error';
 
 class UserController {
     async register(req, res) {
@@ -21,15 +23,15 @@ class UserController {
             });
             if (username == null || email == null || password == null) {
                 const msg = 'Please fill all fields';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
                 // return res.status(400).json({ msg: 'Please fill all fields' });
             } else if (password.length < 8) {
                 const msg = 'Password must be at least 8 characters';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
                 // return res.status(400).json({ msg: 'Password must be at least 8 characters' });
             } else if (cekEmail) {
                 const msg = 'Email already exists';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
                 // return res.status(400).json({ msg: 'Email already exists' });
             }
 
@@ -54,7 +56,7 @@ class UserController {
 
             if (!userWithEmail) {
                 const msg = 'Failed to create user';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
                 // return res.status(500).json({ msg: 'Failed to create user' });
             }
 
@@ -97,12 +99,12 @@ class UserController {
                 }
             });
             const msg = 'User registered successfully';
-            return res.render('pesan', { msg: msg, url: urlError });
+            return res.render('pesan', { msg: msg, url: urlError, info: infoSuccess });
             // return res.status(201).json({ msg: 'User registered successfully' });
         } catch (error) {
             console.error('Error during registration:', error);
             const msg = 'Internal Server Error';
-            return res.render('pesan', { msg: msg, url: urlError });
+            return res.render('pesan', { msg: msg, url: urlError, info: infoError });
             // return res.status(500).json({ msg: 'Internal Server Error' });
         }
     }
@@ -115,7 +117,7 @@ class UserController {
         try {
             if (email === null || password === null) {
                 const msg = 'Please fill all fields';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
             }
     
             const user = await User.findOne({
@@ -126,25 +128,25 @@ class UserController {
     
             if (!user) {
                 const msg = 'Email not found';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
             }
     
             const match = await argon.verify(user.password, password); // Perhatikan penggunaan "await" di sini
     
             if (!match) {
                 const msg = 'Password is wrong';
-                return res.render('pesan', { msg: msg, url: urlError });
+                return res.render('pesan', { msg: msg, url: urlError, info: infoError });
             }
     
             req.session.uuid = user.uuid;
 
             const msg = 'login success';
-            return res.render('pesan', { msg: msg, url: urlSuccess });
+            return res.render('pesan', { msg: msg, url: urlError, info: infoSuccess });
             
         } catch (error) {
             console.error('Error during login:', error);
             const msg = 'Internal Server Error';
-            return res.render('pesan', { msg: msg, url: urlError });
+            return res.render('pesan', { msg: msg, url: urlError, info: infoError });
         }
     }
 
@@ -182,7 +184,7 @@ class UserController {
                 console.log(err);
             } else {
                 const msg = 'logged out successfully';
-                return res.render('pesan', { msg: msg, url: '/' });
+                return res.render('pesan', { msg: msg, url: '/', info: infoSuccess });
             }
         });
     }

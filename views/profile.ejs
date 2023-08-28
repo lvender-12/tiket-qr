@@ -10,7 +10,9 @@
     <div class="profile-container">
         <a href="/logout" class="logout-link">Logout</a>
         <div class="profile-header">
-            <h1 class="welcome-text">Welcome, <span class="username"><%= user.username %></span>!</h1>
+            <img src="bendera-indonesia.png" alt="Bendera Indonesia" class="bendera">
+            <h1 class="welcome-text">Selamat Hari Kemerdekaan Indonesia!</h1>
+            <p class="sub-text">Merdeka! Tanah Airku!</p>
         </div>
         <div class="profile-details">
             <img src="/qr/<%= user.qr %>" alt="QR Code">
@@ -33,7 +35,6 @@
             <% } %>
         </div>
     </div>
-
     <script src="/js/profile.js"></script>
 </body>
 </html>

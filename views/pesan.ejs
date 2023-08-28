@@ -14,8 +14,15 @@
       z-index: 9999999;
     }
 
-    .custom-card {
+    .card-success {
       border: 2px solid #17a2b8; /* Change the border color */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+      padding: 20px; /* Add some padding */
+    }
+
+    .card-error {
+      border: 2px solid #dc3545; /* Change the border color */
       border-radius: 10px; /* Rounded corners */
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
       padding: 20px; /* Add some padding */
@@ -37,7 +44,7 @@
 </head>
 <body>
   <div class="centered-card">
-    <div class="card custom-card">
+    <div class="card <%= info %>">
       <div class="card-body">
         <h1 class="card-title text-center">Message</h1>
         <div class="py-3"><%= msg %></div>
