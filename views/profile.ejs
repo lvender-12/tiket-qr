@@ -7,13 +7,33 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/logout">logout</a>
-    <h1>Welcome, <%= user.username %>!</h1>
-    <p>Email: <%= user.email %></p>
-    <p>Role: <%= user.role %></p>
-    <img src="/qr/<%= user.qr %>" alt="">
-    <p>hadir: <%= user.hadir %></p>
-    <p>makan siang: <%= user.makanSiang %></p>
-    <p>snack: <%= user.snack %></p>
+    <div class="profile-container">
+        <a href="/logout" class="logout-link">Logout</a>
+        <div class="profile-header">
+            <h1 class="welcome-text">Welcome, <span class="username"><%= user.username %></span>!</h1>
+        </div>
+        <div class="profile-details">
+            <img src="/qr/<%= user.qr %>" alt="QR Code">
+            <p class="detail">Email: <span class="email"><%= user.email %></span></p>
+            <p class="detail">Role: <span class="role"><%= user.role %></span></p>
+            <% if (user.hadir == null || user.hadir == belum) { %>
+                <p class="detail">Hadir: <span class="attendance">belum</span></p>
+            <% } else { %>
+                <p class="detail">Hadir: <span class="attendance"><%= user.hadir %></span></p>
+            <% } %>
+            <% if (user.makanSiang == null || user.makanSiang == belum) { %>
+                <p class="detail">Makan Siang: <span class="lunch">belum</span></p>
+            <% } else { %>
+                <p class="detail">Makan Siang: <span class="lunch"><%= user.makanSiang %></span></p>
+            <% } %>
+            <% if (user.Snack == null || user.snack == belum) { %>
+                <p class="detail">Snack: <span class="snack"><%= user.snack %></span></p>
+            <% } else { %>
+                <p class="detail">Snack: <span class="snack"><%= user.snack %></span></p>
+            <% } %>
+        </div>
+    </div>
+
+    <script src="/js/profile.js"></script>
 </body>
 </html>
