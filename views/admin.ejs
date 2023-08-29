@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Hai Admin</h1>
+        <p>jumlah user adalah  = <%= jumlahUser %></p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">UUID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Qr</th>
+                    <th scope="col">Hadir</th>
+                    <th scope="col">Makan Siang</th>
+                    <th scope="col">Snack</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% user.forEach((user, index) => { %>
+                    <tr>
+                        <th scope="row"><%= index + 1 %></th>
+                        <td><%= user.uuid %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.role %></td>
+                        <td><img src="/qr/<%= user.qr %>" width="50px" height="50px"></td>
+                        <td><%= user.hadir %></td>
+                        <td><%= user.makanSiang %></td>
+                        <td><%= user.snack %></td>
+                        <td>
+                            <a href="/admin/delete/<%= user.uuid %>" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

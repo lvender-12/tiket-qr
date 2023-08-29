@@ -3,6 +3,7 @@ const router = express.Router();
 const UserController = require('../controller/UserController');
 const UserMiddleware = require('../middleware/UserMiddleware');
 const ScannerController = require('../controller/ScannerController');
+const AdminController = require('../controller/AdminController');
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -19,6 +20,9 @@ router.get('/logout', UserMiddleware.islogin, UserController.logout);
 
 router.get('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.getUser);
 router.post('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.updateUser);
+
+router.get('/admin', UserMiddleware.isadmin, AdminController.getAllUsers);
+router.get('/admin/delete/:uuid', UserMiddleware.isadmin, AdminController.deleteUser)
 
 
 
