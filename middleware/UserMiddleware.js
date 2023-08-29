@@ -1,5 +1,5 @@
 const User = require('../models/UserModel');
-const infoSuccess = 'card-susuccess';
+const infoSuccess = 'card-success';
 const infoError = 'card-error';
 
 class UserMiddleware {

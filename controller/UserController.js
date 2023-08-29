@@ -8,7 +8,7 @@ const dayjs = require('dayjs');
 const ip = require('ip');
 const port = process.env.PORT || 3000;
 const ipA = ip.address();
-const infoSuccess = 'card-susuccess';
+const infoSuccess = 'card-success';
 const infoError = 'card-error';
 
 class UserController {
@@ -141,7 +141,7 @@ class UserController {
             req.session.uuid = user.uuid;
 
             const msg = 'login success';
-            return res.render('pesan', { msg: msg, url: urlError, info: infoSuccess });
+            return res.render('pesan', { msg: msg, url: urlSuccess, info: infoSuccess });
             
         } catch (error) {
             console.error('Error during login:', error);

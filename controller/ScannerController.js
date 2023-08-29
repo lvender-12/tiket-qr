@@ -1,5 +1,6 @@
 const User = require('../models/UserModel');
-
+const infoSuccess = 'card-success';
+const infoError = 'card-error';
 class ScannerController {
     async getUser(req,res){
         const uuid = req.params.uuid;
@@ -29,7 +30,7 @@ class ScannerController {
                 makanSiang: user.makanSiang,
                 snack: user.snack
             }
-            return res.render('profile', { user: infoUser });
+            return res.render('scanner', { user: infoUser });
         } catch (error) {
             
         }
@@ -38,6 +39,7 @@ class ScannerController {
     async updateUser(req,res){
         const { hadir, makanSiang, snack} = req.body;
         const uuid = req.params.uuid;
+        console.log(uuid);
         const urlError = '/profile/'
         if(hadir === null || makanSiang === null || snack === null){
             const msg = 'tidak boleh kosong';
@@ -45,22 +47,22 @@ class ScannerController {
         }
         const user = await User.update(
             {
-                where:{
-                    uuid: uuid
-                }
-            },
-            {
                 hadir: hadir,
                 makanSiang: makanSiang,
                 snack: snack 
+            },
+            {
+                where: {
+                    uuid: uuid
+                }
             }
-        );
+        );        
         if(!user){
             const msg = 'update failed';
             return res.render('pesan', { msg: msg, url: urlError });
         };
         const msg = 'update succsesfully';
-        return res.render('pesan', { msg: msg, url: '/profile' });
+        return res.render('pesan', { msg: msg, url: '/profile', info: infoSuccess  });
     }
 }
 

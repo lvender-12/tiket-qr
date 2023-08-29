@@ -12,7 +12,7 @@
     <p>email: <%= user.email %></p>
     <p>Role: <%= user.role %></p>
     <img src="/qr/<%= user.qr %>" alt="">
-    <form action="/scanner/:<%=user.uuid%>" method="post">
+    <form action="/scanner/<%=user.uuid%>" method="post">
         <% if (!user.hadir) { %>
             <label>
                 <input type="checkbox" name="hadir"> Hadir
