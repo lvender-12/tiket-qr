@@ -5,7 +5,7 @@ const UserMiddleware = require('../middleware/UserMiddleware');
 const ScannerController = require('../controller/ScannerController');
 const AdminController = require('../controller/AdminController');
 
-router.get('/', (req, res) => {
+router.get('/', UserMiddleware.isguest, (req, res) => {
     res.render('index');
 });
 
@@ -22,12 +22,13 @@ router.get('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.getUser
 router.post('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.updateUser);
 
 router.get('/admin', UserMiddleware.isadmin, AdminController.getAllUsers);
-router.get('/admin/delete/:uuid', UserMiddleware.isadmin, AdminController.deleteUser)
+router.get('/admin/delete/:uuid', UserMiddleware.isadmin, AdminController.deleteUser);
+router.get('/admin/delete', UserMiddleware.isadmin, AdminController.deleterAllUsers);
 
 
 
 router.use((req, res) => {
-    res.render('404'); // Menggunakan res.render untuk merender halaman 404
+    res.render('404/404'); // Menggunakan res.render untuk merender halaman 404
 });
 
 module.exports = router;

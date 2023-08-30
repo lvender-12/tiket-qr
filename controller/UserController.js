@@ -139,9 +139,10 @@ class UserController {
             }
     
             req.session.uuid = user.uuid;
+            const userRole = user.role;
 
             const msg = 'login success';
-            return res.render('pesan', { msg: msg, url: urlSuccess, info: infoSuccess });
+            return res.render('pesan', { msg: msg, url: urlSuccess, info: infoSuccess, userRole: userRole});
             
         } catch (error) {
             console.error('Error during login:', error);

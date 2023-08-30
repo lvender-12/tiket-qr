@@ -8,9 +8,17 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/admin">Admin Panel</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
     <div class="container mt-4">
         <h1 class="mb-4">Hai Admin</h1>
         <p>jumlah user adalah  = <%= jumlahUser %></p>
+        <a href="/admin/delete" class="btn btn-danger btn-sm">Delete all user</a>
         <table class="table table-striped">
             <thead>
                 <tr>
