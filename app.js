@@ -45,5 +45,5 @@ app.use(routes);
 store.sync();
 
 app.listen(port, ()=>{
-    console.log(`Server running on port http://${ipA}:${port}/` || `server running on port http://localhost:${port}/`);
+    console.log(`Server running on port http://${ipA}:${port}/ or http://localhost:${port}/`);
 });

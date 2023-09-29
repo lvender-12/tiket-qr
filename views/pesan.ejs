@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Message Page</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Tambahkan meta viewport untuk responsifitas -->
   <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <style>
@@ -15,22 +15,22 @@
     }
 
     .card-success {
-      border: 2px solid #17a2b8; /* Change the border color */
-      border-radius: 10px; /* Rounded corners */
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
-      padding: 20px; /* Add some padding */
+      border: 2px solid #17a2b8;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
     }
 
     .card-error {
-      border: 2px solid #dc3545; /* Change the border color */
-      border-radius: 10px; /* Rounded corners */
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
-      padding: 20px; /* Add some padding */
+      border: 2px solid #dc3545;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
     }
 
     .custom-button {
-      background-color: #17a2b8; /* Change the button color */
-      color: white; /* Change the text color */
+      background-color: #17a2b8;
+      color: white;
       border: none;
       padding: 8px 16px;
       border-radius: 5px;
@@ -38,7 +38,22 @@
     }
 
     .custom-button:hover {
-      background-color: #138496; /* Darker color on hover */
+      background-color: #138496;
+    }
+
+    /* Tambahkan gaya untuk perangkat seluler */
+    @media (max-width: 768px) {
+      .card-title {
+        font-size: 24px; /* Ukuran font judul */
+      }
+
+      .card-body {
+        font-size: 18px; /* Ukuran font konten */
+      }
+
+      .custom-button {
+        padding: 10px 20px; /* Ukuran tombol */
+      }
     }
   </style>
 </head>
@@ -50,7 +65,7 @@
         <div class="py-3"><%= msg %></div>
 
         <a href="<%= url %>">
-          <button class="btn btn-primary w-100" hr>Next</button>
+          <button class="btn btn-primary w-100">Next</button>
         </a>
       </div>
     </div>
