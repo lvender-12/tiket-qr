@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <style>
+        #video-container {
+            text-align: center;
+        }
+        #qr-result {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video id="qr-video" width="300" height="200" autoplay></video>
+    </div>
+    <div id="qr-result"></div>
+
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('qr-video');
+    const resultContainer = document.getElementById('qr-result');
+
+    // Buat instance Instascan
+    const scanner = new Instascan.Scanner({ video: video });
+
+    // Tambahkan listener untuk mendeteksi QR code
+    scanner.addListener('scan', function (content) {
+        resultContainer.textContent = 'QR Code: ' + content;
+    });
+
+    // Jalankan pemindaian QR code
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]); // Gunakan kamera pertama yang ditemukan
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (error) {
+        console.error('Error accessing cameras:', error);
+    });
+});
+
+    </script>
+</body>
+</html>

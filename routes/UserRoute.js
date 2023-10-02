@@ -18,6 +18,12 @@ router.post('/login', UserMiddleware.isguest, UserController.login);
 router.get('/profile', UserMiddleware.islogin, UserController.profile);
 router.get('/logout', UserMiddleware.islogin, UserController.logout);
 
+router.get('/scanner', (req, res) => {
+    res.render('scanner/scanner1')
+});
+router.get('/scan', (req, res) => {
+    res.render('scanner/scan')
+});
 router.get('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.getUser);
 router.post('/scanner/:uuid', UserMiddleware.isscanner, ScannerController.updateUser);
 
